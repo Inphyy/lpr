@@ -30,7 +30,7 @@ CHARS = ['京', '沪', '津', '渝', '冀', '晋', '蒙', '辽', '吉', '黑',
 
 CHARS_DICT = {char:i for i, char in enumerate(CHARS)}
 
-class LPRDataLoader(Dataset):
+class LPRDataset(Dataset):
     def __init__(self, img_dir, imgSize, lpr_max_len, PreprocFun=None):
         self.img_dir = img_dir
         self.img_paths = []

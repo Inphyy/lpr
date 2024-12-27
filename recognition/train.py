@@ -7,7 +7,7 @@ import numpy as np
 
 from tqdm import tqdm
 from torch.amp import GradScaler, autocast
-from dataset import CHARS, LPRDataLoader
+from dataset import CHARS, LPRDataset
 from model import LPRNet
 from torch.autograd import Variable
 from torch.utils.data.dataloader import DataLoader
@@ -82,8 +82,8 @@ def train():
 
     train_img_dirs = os.path.expanduser(args.train_img_dirs)
     test_img_dirs = os.path.expanduser(args.test_img_dirs)
-    train_dataset = LPRDataLoader(train_img_dirs.split(','), args.img_size, args.lpr_max_len)
-    test_dataset = LPRDataLoader(test_img_dirs.split(','), args.img_size, args.lpr_max_len)
+    train_dataset = LPRDataset(train_img_dirs.split(','), args.img_size, args.lpr_max_len)
+    test_dataset = LPRDataset(test_img_dirs.split(','), args.img_size, args.lpr_max_len)
 
     acc = 0
     for epoch in range(args.max_epoch):

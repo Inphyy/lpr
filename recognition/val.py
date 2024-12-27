@@ -4,7 +4,7 @@ import os
 
 import numpy as np
 
-from dataset import CHARS, LPRDataLoader
+from dataset import CHARS, LPRDataset
 from model import LPRNet
 from torch.autograd import Variable
 from torch.utils.data.dataloader import DataLoader
@@ -117,7 +117,7 @@ def val(args):
     lprnet.eval()
     
     val_img_dirs = os.path.expanduser(args.val_img_dirs)
-    val_dataset = LPRDataLoader(val_img_dirs.split(','), args.img_size, args.lpr_max_len)
+    val_dataset = LPRDataset(val_img_dirs.split(','), args.img_size, args.lpr_max_len)
     acc = Greedy_Decode_Eval(lprnet, val_dataset, args)
     print(acc)
     
